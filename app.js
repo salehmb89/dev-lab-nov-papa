@@ -1,48 +1,33 @@
 const express = require('express')
 const app = express()
-const bodyParser = require('body-parser')
-const port = (process.env.PORT || 3000)
-
+const port = process.env.PORT || 5500;
+// set the view engine to ejs
+let path = require('path');
 app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({ extended: true }));
+app.set('views', path.join(__dirname, 'views'));
 
-4
-let myVariableServer = 'soft coded server data';
+// use res.render to load up an ejs view file
 
-app.get('/view', function (req, res) {
-  res.render('index', 
-  {
-    'myVariableClient' : myVariableServer 
-  }
-  );
-})
+let myTypeServer = "9️⃣ The Peacemaker ✌🏻";
 
-app.post('/postClientData', function (req, res) {
+app.get('/', function(req, res) {
+
+  res.render('index', {
+   
+    myTypeClient: myTypeServer 
+
+  });
   
-   console.log("body: ", req.body)
-   console.log("user Name: ", req.body.userName)
-  //  console.log("params: ", req.params['userName']);
+});
+
+
+app.get('/send', function (req, res) {
   
-  // myVariableServer = req.body.userName;
-
-  res.render('index', 
-  {
-    'myVariableClient' : req.body.userName 
-  }
-  );
+    res.send('Hello World from Express"ياهلا ورحبا" <br><a href="/">home</a>')
 })
-
-
-app.get('/', function (req, res) {
-  res.send('<h1>Hello World From Express & a PaaS/Render  "ياهلا ومرحبا"</h1>')
-})
-
-app.get('/index', function (req, res) {
-  res.sendFile(__dirname + '/index.html');
-})
-
-
 
 // app.listen(3000)
 
-app.listen(port, () => console.log(`Server is running...on ${ port }` ));
+app.listen(port, () => {
+  console.log(`nov app listening on port ${port}`)
+})
