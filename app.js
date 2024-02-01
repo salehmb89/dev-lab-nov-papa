@@ -1,45 +1,15 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-const port = (process.env.PORT || 5500)
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://barrycumbie:fr1urj7dVc5OhnuX@cluster0.saltcdu.mongodb.net/?retryWrites=true&w=majority";
-
-
+const port = (process.env.PORT || 3000)
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
-
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  }
-});
-
-async function run() {
-  try {
-    // Connect the client to the server	(optional starting in v4.7)
-    await client.connect();
-    // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
-  }
-}
-run().catch(console.dir);
-
-
-
+4
 let myVariableServer = 'soft coded server data';
 
-app.get('/barry', function (req, res) {
+app.get('/view', function (req, res) {
   res.render('index', 
   {
     'myVariableClient' : myVariableServer 
@@ -64,10 +34,10 @@ app.post('/postClientData', function (req, res) {
 
 
 app.get('/', function (req, res) {
-  res.send('<h1>Hello World From Express & a PaaS/Render</h1>')
+  res.send('<h1>Hello World From Express & a PaaS/Render  "ياهلا ومرحبا"</h1>')
 })
 
-app.get('/whatever', function (req, res) {
+app.get('/index', function (req, res) {
   res.sendFile(__dirname + '/index.html');
 })
 
