@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = process.env.PORT || 5500;
+const port = process.env.PORT || 5502;
 // set the view engine to ejs
 let path = require('path');
 app.set('view engine', 'ejs');
@@ -23,7 +23,8 @@ app.get('/', function(req, res) {
 
 app.get('/send', function (req, res) {
   
-    res.send('Hello World from Express"ياهلا ورحبا" <br><a href="/">home</a>')
+  res.send('<p style="font-size: 18px;">Hello World from Express "ياهلا ورحبا" <br><a href="/" style="font-size: 18px;">home</a></p>');
+
 })
 
 // app.listen(3000)
