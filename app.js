@@ -3,7 +3,7 @@ const app = express()
 const bodyParser = require('body-parser')
 const port = process.env.PORT || 3000;
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://sbasalim:<password>@cluster0.h1oabai.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb+srv://sbasalim:<Saleh123>@cluster0.h1oabai.mongodb.net/?retryWrites=true&w=majority";
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
