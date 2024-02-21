@@ -1,16 +1,38 @@
-<h1>Hello from index.html</h1>
+<%- include('partials/html-start.ejs') %>
+
+<h1>Hello World.</h1>
+
+<p>I'm Saleh Basalim.</p>
+    
+
+    <p><%= myResultClient.length %></p>
+
+    <% for (var i=0; i< myResultClient.length; i++ ) { %>
+    
+        <li> <%= myResultClient[i].userName %> </li>
+    
+    <% } %> 
+
+    
+<li> I be <%= myTypeClient %>, good at mullet, bad at stop talking.</p>
+
+    <form method="get" action="/name">
+        <p>Tell us your name! Or something: </p>
+        <input type="text" name="ejsFormName" value=" <%=myTypeClient %> "> 
+        <input type="submit">
+      </form>
 
 
 
-<form action="/postClientData" method="POST">
-          
-    <input type="text" id="userName" name="userName" value="default value"></input>
+    <footer> sent from a file on my node server, yo!
 
-    <button class="btn btn-primary" type="submit">submit</button>
+    <a href="/send">send<br></a> |
 
-  </form>
+    link tp my repo <a href="https://github.com/salehmb89/dev-lab-nov-papa" target="_blank">Source Code</a>
+
+</footer>
+
+<button class="btn btn-primary">boostrap working?</button>
 
 
-<%= myVariableClient %> 
-
-<% console.log("where am I?") %> 
+<%- include('partials/html-end.ejs') %>
