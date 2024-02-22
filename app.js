@@ -4,7 +4,7 @@ const app = express()
 const port = process.env.PORT || 3000;
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const bodyParser = require('body-parser')
-const uri = "mongodb+srv://sbasalim:Saleh123@cluster0.h1oabai.mongodb.net/?retryWrites=true&w=majority";
+//const uri = "mongodb+srv://sbasalim:Saleh123@cluster0.h1oabai.mongodb.net/?retryWrites=true&w=majority";
 
 // set the view engine to ejs
 let path = require('path');
@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 let myTypeServer = "9️⃣ The Peacemaker ✌🏻";
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri, {
+const client = new MongoClient(process.env.URI, {
   serverApi: {
     version: ServerApiVersion.v1,
     strict: true,
@@ -34,7 +34,6 @@ async function run() {
     const result = await client.db("papa-database").collection("papa-collection").find().toArray();
 
     //console.log("cxnDB result: ", result);
-
     return result; 
 
     await client.db("admin").command({ ping: 1 });
@@ -57,12 +56,9 @@ app.get('/read', async (req,res) => {
     myResultClient: myResultServer
 
   });
-
-
 }); 
+
 run().catch(console.dir);
-
-
 
 app.get('/', async function(req, res) {
   try {
@@ -78,8 +74,6 @@ app.get('/', async function(req, res) {
   }
 });
 
-
-
 app.get('/name', (req,res) => {
 
   console.log("in get to slash name:", req.query.ejsFormName); 
@@ -90,11 +84,8 @@ app.get('/name', (req,res) => {
     myResultClient: "myResultServer"
 
   });
-
   
 })
-
-
 
 app.get('/send', function (req, res) {
   
